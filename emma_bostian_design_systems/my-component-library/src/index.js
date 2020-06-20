@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PrimaryButton from "./components/Buttons";
+import { PrimaryButton, SecondaryButton, TertiaryButton } from "./components/Buttons";
+import { GlobalStyle } from "./utils";
 
 function App() {
   return (
-    <PrimaryButton>Hello world</PrimaryButton>
+    <>
+      <PrimaryButton modifiers="small" >Hello world</PrimaryButton>
+      <SecondaryButton modifiers={["large", "warning"]} >Hello world</SecondaryButton>
+      <TertiaryButton modifiers="warningSecondary" >Hello world</TertiaryButton>
+      <GlobalStyle />
+    </>
   )
 }
 
