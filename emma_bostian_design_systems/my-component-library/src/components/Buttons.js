@@ -11,30 +11,30 @@ const BUTTON_MODIFIERS = {
     font-size: ${typeScale.header5};
     padding: 16px 24px;
   `,
-  warning: () => `
-    background-color: ${defaultTheme.status.warningColor};
-    color: ${defaultTheme.textColorInverted}
+  warning: ({ props }) => `
+    background-color: ${props.theme.status.warningColor};
+    color: ${props.theme.textColorInverted}
 
     &:hover, &:focus {
-      background-color: ${defaultTheme.status.warningColorHover};
-      outline: 3px solid ${defaultTheme.status.warningColorHover}
+      background-color: ${props.theme.status.warningColorHover};
+      outline: 3px solid ${props.theme.status.warningColorHover}
     }
     &:active {
-      background-color: ${defaultTheme.status.warningColorActive}
+      background-color: ${props.theme.status.warningColorActive}
     }
   `,
-  warningSecondary: () => `
+  warningSecondary: ({ props }) => `
     background: none;
-    border: 2px solid ${defaultTheme.status.warningColor};
-    color: ${defaultTheme.status.warningColor};
+    border: 2px solid ${props.theme.status.warningColor};
+    color: ${props.theme.status.warningColor};
   `,
-  warningTertiary: () => `
+  warningTertiary: ({ props }) => `
   background: none;
-  color: ${defaultTheme.status.warningColor}`
-}
+  color: ${props.theme.status.warningColor}`,
+};
 
-const primaryRed = 'red';
-const primaryPurple = 'purple';
+const primaryRed = "red";
+const primaryPurple = "purple";
 
 const Button = styled.button`
   padding: 12px 24px;
@@ -46,25 +46,25 @@ const Button = styled.button`
   transition: background-color 0.2 linear;
 
   &:hover {
-    background-color: ${defaultTheme.primaryColorHover};
-    color: ${defaultTheme.textColorOnPrimary};
+    background-color: ${(props) => props.theme.primaryColorHover};
+    color: ${(props) => props.theme.textColorOnPrimary};
   }
 
   &:active {
-    background-color: ${defaultTheme.primaryColorActive};
-    border-color: ${defaultTheme.primaryColorActive}
-    color: ${defaultTheme.textColorOnPrimary}
+    background-color: ${(props) => props.theme.primaryColorActive};
+    border-color: ${(props) => props.theme.primaryColorActive}
+    color: ${(props) => props.theme.textColorOnPrimary}
   }
 `;
 
 const PrimaryButton = styled(Button)`
-  background-color: ${defaultTheme.primaryColor};
+  background-color: ${(props) => props.theme.primaryColor};
   border: none;
   color: white;
 
   &:disabled {
-    background: ${defaultTheme.disabled};
-    color: ${defaultTheme.textOnDisabled};
+    background: ${(props) => props.theme.disabled};
+    color: ${(props) => props.theme.textOnDisabled};
     cursor: not-allowed;
   }
 
@@ -77,29 +77,25 @@ const SecondaryButton = styled(Button)`
   color: white;
 
   &:disabled {
-    background-color: ${defaultTheme.disabled};
-    color: ${defaultTheme.textOnDisabled};
+    background-color: ${(props) => props.theme.disabled};
+    color: ${(props) => props.theme.textOnDisabled};
     cursor: not-allowed;
   }
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
-  `;
-  
-  const TertiaryButton = styled(Button)`
+`;
+
+const TertiaryButton = styled(Button)`
   border: 1px ${primaryPurple} solid;
   color: ${primaryPurple};
-  
+
   &:disabled {
     background: none;
-    border-color: ${defaultTheme.disabled};
-    color: ${defaultTheme.disabled};
+    border-color: ${(props) => props.theme.disabled};
+    color: ${(props) => props.theme.disabled};
     cursor: not-allowed;
   }
 
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
 `;
 
-export {
-  PrimaryButton,
-  SecondaryButton,
-  TertiaryButton
-};
+export { PrimaryButton, SecondaryButton, TertiaryButton };
